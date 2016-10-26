@@ -1,0 +1,167 @@
+<html>
+
+<body background="static/image.jpeg">
+<!-- <center><img src="1.jpeg" alt="HTML5 Icon" style="width:128px;height:128px;"></center> -->
+<center>
+<br>
+<br>
+<h1> BatchMates.com</h1>
+
+   
+<form name="myform" id="myForm" method = "post">    
+  <table>
+    <tr>
+      <td align="right">First Name:</td>
+      <td align="left"><input type="text" name="form-first-name" /></td>
+      {{error_firstname}}
+    </tr>
+    <tr>
+      <td align="right">Last Name:</td>
+      <td align="left"><input type="text" name="form-last-name" /></td>
+      {{error_lastname}}
+    </tr>
+    <tr>
+      <td align="right">Email:</td>
+      <td align="left"><input type="text" name="form-email" /></td>
+      {{error_email}}
+    </tr>
+    <tr>
+      <td align="right">Graduationyear:</td>
+      <td align="left"><input type="text" name="year" /></td>
+      {{error_year}}
+    </tr>
+    <tr>
+      <td align="right">Password:</td>
+      <td align="left"><input type="password" name="form-password" /></td>
+      {{error_password}}
+    </tr>
+    <tr>
+      <td align="right">Conform Password:</td>
+      <td align="left"><input type="password" name="form-verify" /></td>
+      {{error_verify}}
+    </tr>
+  </table>
+  <br>
+                            
+
+
+    
+  <script>
+var stateObject = {
+    "Anatapur": {
+        "Kadiri": ["AVR", "KLM","Gama"],
+        "Nandyala": ["RGM", "RGUT","Alpha","Beta","REME"],
+        "Hindupur": ["AVM", "BRSM","KVM","MVM","sri sai"],
+        "Gunthakal":["RHIT", "MKME","RASTE","KLUE","ganapavaram college"],
+        "Lepakshi":  ["RGM", "RGUT","Alpha","Beta","rayak"]
+    },
+    "Chittore": {
+        "Tirupathi": ["SVU", "Padmavathi","Vidyanikethan"],
+        "Kanipakam": ["KUN", "LUVE","EVR","KVR"],
+        "Kalahasti": ["RGMe", "RGUTE","ABC","DEF"],
+        "madanapalli":["RGMe", "RGUTE","ABC","DEF"],
+        "palamaner":["Sri Vani College", "Mother Teresa College","Global","DEF"],
+        "kuppam":["Dravidian college", "PES","Sri Siva","Indira Rajiv"],
+        "pileru":["MJR", "SG","CNR","DEF"]
+
+    },
+
+    "East Godavari": {
+        "Rajamandry": ["GEIT", "RIET","KIET"],
+        "Kakinada": ["KIETe", "MATE","EVRE","KVRE"],
+        "Amalapuram": ["konasema college", "BVS","Aims","Prassidha","B v chalamaiah","sri konaseema"],
+        "Tuni": ["Blue Birds", "siddartha","Space","KVRE","Global"],
+        "manadapet": ["AVR", "VPR","Vignan","Aditya","Prathiba","vidyavikas"],
+        "Samalkota": ["YRL", "Ideal","Pragathi","Jyothi","samal"]
+    },
+    "Krishna": {
+        "Vijayawada": ["Siddarada", "KLU","MANE","KESE"],
+        "MAchilipatnam": ["BVR", "AMR","TATE","PLES"],
+        "Nandigama": ["CVRT", "AMRTE","Hyt","KIHh"],
+        "Gudivada": ["samuel", "Saint","Jhones","Gitam"],
+        "Pamuru": ["vignan", "GSL","katuri","PLES"],
+        "Nuzivid": ["BVR", "AMR","TATE","PLES"],
+        "vuyyuru": ["Adams", "Abdulkalam","TATA","Brillient"],
+        "Sathupalli": ["Bigireddy", "Bharat","Daripalli","GHt"]
+
+      
+    },
+
+ "Vizaianagaram": {
+        "Parvathipuram": ["Gokul Engineering College", "MVJR"],
+        "Bobbili": ["Tandra Paparaya Engineering", "Bhaskar College","gth","hjk","ghjk","gvgf"],
+        "salur": ["hi","hhy","tyj","Tandra Paparaya Engineering", "Bhaskar College"],
+        "Nuzivid": ["Tandra Paparaya Engineering", "jnj","tfg","hjyu","Bhaskar College"],
+        "Nandyala": [" Paparaya Engineering","ddxd","vu","gvuuj", "Bhaskar College"]
+        
+    },
+    "Kadapa": {
+        "Proddutur": ["YSR","Abhyas","Gurunanak","KSRM", "KORM"],
+        "Tadipatri": ["CV", "MV","gyuuy","gandhi","Aditya","TDP"],
+        "Nandalur": ["KORM","KLO","jkkk","KSRM", "KORM"],
+        "jammulamadugu": ["jkll","jjj","KSRM", "KORM"],
+        "Badvel": ["ghhjh","mayuk","madina","KSRM", "KORM"],
+        "Kodur": ["rajoli","rambab","jjkjjk","KSRM", "KORM"],
+        "Pulivendula": ["radhi","krishna","KSRM", "KORM"],
+        "Gandikota": ["narayamma","madina","KSRM", "KORM"],
+
+    }
+}
+window.onload = function () {
+    var countySel = document.getElementById("countySel"),
+        stateSel = document.getElementById("stateSel"),
+        districtSel = document.getElementById("districtSel");
+    for (var country in stateObject) {
+        countySel.options[countySel.options.length] = new Option(country, country);
+    }
+    countySel.onchange = function () {
+        stateSel.length = 1; // remove all options bar first
+        districtSel.length = 1; // remove all options bar first
+        if (this.selectedIndex < 1) return; // done   
+        for (var state in stateObject[this.value]) {
+            stateSel.options[stateSel.options.length] = new Option(state, state);
+        }
+    }
+    countySel.onchange(); // reset in case page is reloaded
+    stateSel.onchange = function () {
+        districtSel.length = 1; // remove all options bar first
+        if (this.selectedIndex < 1) return; // done   
+        var district = stateObject[countySel.value][this.value];
+        for (var i = 0; i < district.length; i++) {
+            districtSel.options[districtSel.options.length] = new Option(district[i], district[i]);
+        }
+    }
+}
+</script>
+</head>
+
+<body>
+
+    Select District: <select name="district" id="countySel" size="1">
+        <option value="" selected="selected">Select District</option>
+    </select>
+    <br>
+    <br>
+    Select City: <select name="city" id="stateSel" size="1">
+        <option value="" selected="selected">Select City</option>
+    </select>
+    <br>
+    <br>
+    Select College: <select name="college" id="districtSel" size="1">
+        <option value="" selected="selected">Select College</option>
+    </select><br><br><br>
+    <input type="submit">
+
+</form>
+
+
+
+
+  
+        </center>
+    </P>
+ </FORM>
+
+
+ </body>
+</html>

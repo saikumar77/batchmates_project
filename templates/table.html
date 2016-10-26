@@ -1,0 +1,43 @@
+<html>
+<body background="static/image.jpeg">
+  <center>
+    <h1>BatchMates.com</h1>
+  </center>
+  <p align="right">
+    <a href="/logout"><button type = "button">Logout</button></a>
+  </p>
+  <center>
+    <h2>List of all the events</h2>
+  </center>
+<style type = "text/css" media = "all">
+         .div5 {
+           
+            margin-left: 500px;
+            margin-top: 0px;
+            margin-right: 100px
+         }
+         
+         </style>
+         <div class="div5">
+
+ </div> 
+ <table style="width:120%">
+  <tr>
+    {% for e in event %}
+      <td ><b>{{e.username}}</b></td>
+      <td>{{e.created}}</td></tr>
+      
+      <tr>
+      <td><b>{{e.title}}</b></td>
+      <br>
+      
+      </tr>
+      <tr>
+      <br>
+      <td>{{e.art}}</td>
+      </tr>
+    {% endfor %}
+</table>
+
+
+</html>

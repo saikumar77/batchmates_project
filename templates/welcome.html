@@ -1,0 +1,91 @@
+<html>
+<body background="static/image.jpeg">
+<center>
+<h1>BatchMates.com</h1>
+<form>
+	<h2>Welcome {{val3}}</h2>
+<p align="right">
+	<a href="/logout"><button type = "button">Logout</button></a>
+</p>
+</form>
+</center>
+
+<style type = "text/css" media = "all">
+        h4 {
+           color: maroon;
+           margin-left: 40px;
+           
+        }
+        h2 {
+           color: maroon;
+           margin-left: 40px;
+           
+        }
+        p.ex1 {
+         margin-top: -4cm;
+         margin-left: 10cm;
+       }
+       p.ex2{
+         margin-top: -2cm;
+         margin-left: 10cm;
+       }
+       h5 {
+           color: maroon;
+           margin-left: 40px;
+           margin-top: -15px;
+           margin-bottom: 2px;
+           
+        }
+        h6 {
+        	margin-top:-150px;
+        }
+        .detail{
+        	padding-top: 0px;
+        	padding-left: 40px;
+        }
+
+</style>
+<h2>College Alumni</h2>
+{% for r in collegemembers %}
+	<h4>{{r.firstname}} {{r.lastname}}</h4>
+	<h5>{{r.email}}</h5>
+	
+{% endfor %}
+<center>
+	<form method = "post">
+		<h6>
+	<h1>Post an Event</h1>
+	<h3>Title</h3>
+	<input type = "text" name = "title" value = "{{title}}">
+	<br>
+	<h3>Description</h3>
+	<textarea rows="4" cols="100"name="art">{{art}}</textarea>
+	<br>
+	<br>
+	<input type = "submit">
+	<br>
+	<br>
+	<a href="/events"><button type = "button">Click here to see Events</button></a>
+	</h6>
+	</form>	
+</center>
+<center>
+	<div class="detail">
+	<table style width="59px" cellspacing="15">
+	{% for e in event %}
+
+    <tr>
+    <th><h3>{{e.username}}</h3></th>
+	<th><h3>{{e.created}}</h3></th></tr>
+	<tr>
+	<th><h3>{{e.title}}</h3></th></tr>
+	<td><h3>{{e.art}}</h3></td>
+	
+</div>
+
+	<br>
+	
+{% endfor %}
+</center>
+</body>
+</html>
